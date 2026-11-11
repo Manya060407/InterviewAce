@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - InterviewAce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="/dashboard">
+                <i class="bi bi-cpu-fill me-2"></i>InterviewAce
+            </a>
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <a class="nav-link active fw-semibold" href="/dashboard">Dashboard</a>
+                <a class="nav-link" href="/setup">New Interview</a>
+                <a class="nav-link" href="/history">History</a>
+                <a class="btn btn-outline-danger btn-sm" href="/logout">Sign Out</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <!-- Banner Header -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-primary text-white mb-4">
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h2 class="fw-bold mb-1">Welcome back, {{ user_name }}!</h2>
+                    <p class="mb-0 opacity-75">Ready to practice your next technical mock interview?</p>
+                </div>
+                <a href="/setup" class="btn btn-light btn-lg text-primary fw-bold px-4 rounded-pill">
+                    <i class="bi bi-play-circle-fill me-2"></i>Start New Interview
+                </a>
+            </div>
+        </div>
+
+        <!-- Dynamic Stat Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white text-center">
+                    <small class="text-muted fw-bold text-uppercase">Completed Interviews</small>
+                    <h2 class="display-5 fw-bold text-dark mt-2 mb-0">{{ total_interviews }}</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white text-center">
+                    <small class="text-muted fw-bold text-uppercase">Average Score</small>
+                    <h2 class="display-5 fw-bold text-primary mt-2 mb-0">{{ avg_score }} <span class="fs-6 text-muted">/10</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm rounded-4 p-4 bg-white text-center">
+                    <small class="text-muted fw-bold text-uppercase">Best Score</small>
+                    <h2 class="display-5 fw-bold text-success mt-2 mb-0">{{ best_score }} <span class="fs-6 text-muted">/10</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Interviews Section -->
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+            <h5 class="fw-bold mb-3">Recent Interviews</h5>
+            
+            {% if history_list %}
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Role</th>
+                            <th>Difficulty</th>
+                            <th>Type</th>
+                            <th>Score</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in history_list %}
+                        <tr>
+                            <td class="fw-semibold">{{ item.job_role }}</td>
+                            <td><span class="badge bg-secondary">{{ item.difficulty }}</span></td>
+                            <td>{{ item.interview_type }}</td>
+                            <td><span class="badge bg-success fs-6">{{ item.score }} / 100</span></td>
+                            <td><a href="/feedback?id={{ loop.index0 }}" class="btn btn-sm btn-outline-primary">View Report</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-4">
+                <p class="text-muted mb-2">No interviews given yet!</p>
+                <a href="/setup" class="btn btn-primary-custom btn-sm">Take your first interview</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>

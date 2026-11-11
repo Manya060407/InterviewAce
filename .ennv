@@ -1,0 +1,9 @@
+FLASK_SECRET_KEY=interviewace_super_secret_key_2026
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=khushi2004
+DB_NAME=interviewace_db
+DB_PORT=3306
+
+GEMINI_API_KEY=AIzaSyAQ.Ab8RN6I_ClSyiWcmdtRb5x5HmGLaDf8sdha2qst9DP9ZwygwDg

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterviewAce - AI-Powered Mock Interviews</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-cpu-fill"></i> InterviewAce
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#how-it-works">How It Works</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-outline-custom" href="/login">Login</a></li>
+                    <li class="nav-item ms-2"><a class="btn btn-primary-custom" href="/register">Get Started</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-6">
+                    <h1 class="hero-title mb-3">Ace Your Next Tech Interview with AI</h1>
+                    <p class="hero-subtitle">Practice role-specific mock interviews tailored to your experience. Get instant AI evaluations, weak-spot analysis, and personalized suggestions.</p>
+                    <div class="d-flex gap-3">
+                        <a href="/register" class="btn btn-primary-custom btn-lg">Start Mock Interview</a>
+                        <a href="#how-it-works" class="btn btn-outline-custom btn-lg">Learn More</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-card">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="feature-icon mb-0"><i class="bi bi-robot"></i></div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Gemini AI Interviewer</h6>
+                                <small class="text-muted">Real-time question generation</small>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-3">"Can you explain how indexing improves query performance in MySQL?"</p>
+                        <div class="bg-light p-3 rounded-3 mb-3 border">
+                            <small class="fw-semibold text-success"><i class="bi bi-check-circle-fill me-1"></i> Answer Evaluation Ready</small>
+                            <p class="mb-0 text-muted small mt-1">Score: 8.5/10 — Strong explanation on B-Tree structures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Why Choose InterviewAce?</h2>
+                <p class="text-muted">Everything you need to practice, learn, and land your target role.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-sliders"></i></div>
+                        <h5 class="fw-bold">Customizable Setup</h5>
+                        <p class="text-muted">Choose from roles like Python Developer, Data Analyst, HR, or specify custom roles with tailored difficulty levels.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                        <h5 class="fw-bold">Instant Evaluation</h5>
+                        <p class="text-muted">Get structured JSON-based feedback after every answer covering accuracy, clarity, and missing points.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="bi bi-pie-chart-fill"></i></div>
+                        <h5 class="fw-bold">Performance Tracking</h5>
+                        <p class="text-muted">Track your progress over time with visual Chart.js dashboards and downloadable PDF reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-white border-top border-bottom">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How It Works</h2>
+                <p class="text-muted">Get interview-ready in three simple steps.</p>
+            </div>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <span class="badge bg-primary rounded-circle fs-5 mb-3 px-3 py-2">1</span>
+                        <h5 class="fw-bold">Configure Interview</h5>
+                        <p class="text-muted">Select job role, experience level, interview type, and total questions.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <span class="badge bg-primary rounded-circle fs-5 mb-3 px-3 py-2">2</span>
+                        <h5 class="fw-bold">Answer AI Questions</h5>
+                        <p class="text-muted">Answer real-time dynamic questions generated by Google Gemini API.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-4">
+                        <span class="badge bg-primary rounded-circle fs-5 mb-3 px-3 py-2">3</span>
+                        <h5 class="fw-bold">Review Detailed Report</h5>
+                        <p class="text-muted">Receive your overall score, weak area analysis, and improvement tips.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <h5 class="navbar-brand text-white mb-2"><i class="bi bi-cpu-fill"></i> InterviewAce</h5>
+                    <p class="small">An AI-powered mock interview platform designed to prepare candidates for technical and professional roles.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="small mb-0">&copy; 2026 InterviewAce. College Project Built with Flask & Gemini API.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

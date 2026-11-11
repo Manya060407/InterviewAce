@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interview Room - InterviewAce</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="bg-light">
+
+    <!-- Top Bar -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/dashboard"><i class="bi bi-cpu-fill"></i> InterviewAce</a>
+            <span class="badge bg-primary-subtle text-primary border px-3 py-2 rounded-pill fs-6">
+                {{ config.interview_type }} Interview: {{ config.job_role }} ({{ config.difficulty }})
+            </span>
+        </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                
+                <!-- Progress Header -->
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold text-muted">Question {{ current_num }} of {{ total_questions }}</span>
+                    <span class="badge bg-success"><i class="bi bi-record-circle me-1"></i> Live Session</span>
+                </div>
+                <div class="progress mb-4" style="height: 8px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 20%;"></div>
+                </div>
+
+                <!-- Main Form & Question Card -->
+                <form action="/submit-answer" method="POST">
+                    <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 mb-4">
+                        <div class="d-flex align-items-center gap-2 text-primary fw-semibold mb-3">
+                            <i class="bi bi-question-circle-fill fs-5"></i> Question {{ current_num }}
+                        </div>
+                        <h4 class="fw-bold mb-4" id="questionText">
+                            {{ question }}
+                        </h4>
+
+                        <!-- Hidden Field to Pass Current Question -->
+                        <input type="hidden" name="question_text" value="{{ question }}">
+
+                        <!-- Answer Input Area -->
+                        <div class="mb-4">
+                            <label for="userAnswer" class="form-label fw-semibold">Your Answer</label>
+                            <textarea class="form-control rounded-3 p-3" name="user_answer" id="userAnswer" rows="6" placeholder="Type your answer here in detail..." required></textarea>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="/dashboard" class="btn btn-outline-secondary px-4"><i class="bi bi-x-circle me-1"></i> Quit Session</a>
+                            <button type="submit" class="btn btn-primary-custom px-4 py-2">
+                                Submit Answer & Next <i class="bi bi-arrow-right ms-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- AI Helper Status Box -->
+                <div class="card border-0 shadow-sm rounded-4 p-3 bg-white d-flex flex-row align-items-center gap-3">
+                    <div class="feature-icon mb-0 bg-primary-subtle text-primary"><i class="bi bi-stars"></i></div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Gemini AI Engine Active</h6>
+                        <small class="text-muted">Questions are generated specifically for your selected role. Provide a comprehensive answer for a higher rating.</small>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
